@@ -13,6 +13,21 @@ module.exports = {
         path: './content/blog/**/*.md',
         typeName: 'BlogPost'
       }
+    },
+    {
+      use: '@gridsome/source-strapi',
+      options: {
+        apiURL: 'http://localhost:1337',
+        queryLimit: 1000, // Defaults to 100
+        contentTypes: ['article', 'category'],
+        // singleTypes: ['impressum'],
+        // Possibility to login with a Strapi user,
+        // when content types are not publicly available (optional).
+        // loginData: {
+        //   identifier: 'yanlin',
+        //   password: '123456'
+        // }
+      }
     }
   ]
 }

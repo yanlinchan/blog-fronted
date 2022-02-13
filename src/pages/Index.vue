@@ -24,19 +24,24 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="post-preview">
+          <div class="post-preview" v-for="edge in $page.posts.edges" :key="edge.node.id">
             <a href="post.html">
-              <h2 class="post-title">Man must explore, and this is exploration at its greatest</h2>
-              <h3 class="post-subtitle">Problems look mighty small from 150 miles up</h3>
+              <h2 class="post-title">{{ edge.node.title }}</h2>
+              <!-- <h3 class="post-subtitle">Problems look mighty small from 150 miles up</h3> -->
             </a>
             <p class="post-meta">
               Posted by
-              <a href="#">Start Bootstrap</a>
-              on September 24, 2019
+              <a href="#">{{ edge.node.author.name }}</a>
+              on {{ edge.node.created_at }}
+            </p>
+            <p>
+              <span v-for="tag in edge.node.categories" :key="tag.id">
+                <a href="">{{ tag.name }}</a>&nbsp;&nbsp;
+              </span>
             </p>
           </div>
           <hr />
-          <div class="post-preview">
+          <!-- <div class="post-preview">
             <a href="post.html">
               <h2
                 class="post-title"
@@ -74,7 +79,7 @@
               on July 8, 2019
             </p>
           </div>
-          <hr />
+          <hr /> -->
           <!-- Pager -->
           <div class="clearfix">
             <a
@@ -90,12 +95,37 @@
   </Layout>
 </template>
 
+<page-query>
+query ($page: Int) {
+  posts: allStrapiArticle (perPage: 2, page: $page) @paginate {
+    edges {
+      node {
+        id,
+        title,
+        created_at,
+        author {
+          id,
+          name
+        },
+        categories {
+          name,
+          id
+        }
+      }
+    }
+  }
+}
+</page-query>
 <script>
+import pager from 'gridsome'
 export default {
   metaInfo: {
     title: 'Hello, world!'
   },
-  name: 'HomePage'
+  name: 'HomePage',
+  components: {
+    pager
+  }
 }
 </script>
 
