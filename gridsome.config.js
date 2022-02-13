@@ -20,7 +20,8 @@ module.exports = {
         apiURL: 'http://localhost:1337',
         queryLimit: 1000, // Defaults to 100
         contentTypes: ['article', 'category'],
-        // singleTypes: ['impressum'],
+        // typeName: 'Strapi',
+        singleTypes: ['homePage'],
         // Possibility to login with a Strapi user,
         // when content types are not publicly available (optional).
         // loginData: {
@@ -29,5 +30,19 @@ module.exports = {
         // }
       }
     }
-  ]
+  ],
+  templates: {
+    StrapiArticle: [
+      {
+        path: '/post/:id',
+        component: './src/templates/Post.vue'
+      }
+    ],
+    StrapiCategory: [
+      {
+        path: '/tag/:id',
+        component: './src/templates/Tag.vue'
+      }
+    ]
+  }
 }

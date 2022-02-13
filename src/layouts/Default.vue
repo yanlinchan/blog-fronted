@@ -6,10 +6,10 @@
       id="mainNav"
     >
       <div class="container">
-        <a
+        <g-link
           class="navbar-brand"
-          href="index.html"
-        >Start Bootstrap</a>
+          to="/"
+        >Start Bootstrap</g-link>
         <button
           aria-controls="navbarResponsive"
           aria-expanded="false"
@@ -28,28 +28,28 @@
         >
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a
+              <g-link
                 class="nav-link"
-                href="index.html"
-              >Home</a>
+                to="/"
+              >Home</g-link>
             </li>
             <li class="nav-item">
-              <a
+              <g-link
                 class="nav-link"
-                href="about.html"
-              >About</a>
+                to="/about"
+              >About</g-link>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a
                 class="nav-link"
                 href="post.html"
               >Sample Post</a>
-            </li>
+            </li> -->
             <li class="nav-item">
-              <a
+              <g-link
                 class="nav-link"
-                href="contact.html"
-              >Contact</a>
+                to="/contact"
+              >Contact</g-link>
             </li>
           </ul>
         </div>

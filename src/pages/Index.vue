@@ -5,15 +5,15 @@
     <!-- Page Header -->
     <header
       class="masthead"
-      style="background-image: url('/img/home-bg.jpg')"
+      :style="{backgroundImage: `url(http://localhost:1337${general.shareImage.url})`}"
     >
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="site-heading">
-              <h1>Clean Blog</h1>
-              <span class="subheading">A Blog Theme by Start Bootstrap</span>
+              <h1>{{ general.metaTitle }}</h1>
+              <span class="subheading">{{ general.metaDescription }}</span>
             </div>
           </div>
         </div>
@@ -25,10 +25,10 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="post-preview" v-for="edge in $page.posts.edges" :key="edge.node.id">
-            <a href="post.html">
+            <g-link :to="'/post/' + edge.node.id">
               <h2 class="post-title">{{ edge.node.title }}</h2>
               <!-- <h3 class="post-subtitle">Problems look mighty small from 150 miles up</h3> -->
-            </a>
+            </g-link>
             <p class="post-meta">
               Posted by
               <a href="#">{{ edge.node.author.name }}</a>
@@ -36,7 +36,7 @@
             </p>
             <p>
               <span v-for="tag in edge.node.categories" :key="tag.id">
-                <a href="">{{ tag.name }}</a>&nbsp;&nbsp;
+                <g-link :to="'/tag/' + tag.id">{{ tag.name }}</g-link>&nbsp;&nbsp;
               </span>
             </p>
           </div>
@@ -125,6 +125,19 @@ query ($page: Int) {
       }
     }
   }
+  allStrapiHomePage {
+    edges {
+      node {
+        seo {
+          metaTitle,
+          metaDescription,
+          shareImage {
+            url
+          }
+        }
+      }
+    }
+  }
 }
 </page-query>
 <script>
@@ -136,7 +149,12 @@ export default {
   name: 'HomePage',
   components: {
     Pager
-  }
+  },
+  computed: {
+    general () {
+      return this.$page.allStrapiHomePage.edges[0].node.seo
+    }
+  },
 }
 </script>
 
