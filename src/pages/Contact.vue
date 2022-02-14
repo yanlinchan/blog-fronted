@@ -79,7 +79,7 @@ export default {
   methods: {
     async onSubmit () {
       try {
-        const { data } = await axios.post(`${GRIDSOME_API_URL}/contacts`, this.form)
+        const { data } = await axios.post(`${this.GRIDSOME_API_URL}/contacts`, this.form)
         window.alert('发送成功')
       } catch (error) {
         window.alert('发送失败')
