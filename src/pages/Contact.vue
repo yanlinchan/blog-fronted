@@ -82,7 +82,6 @@ export default {
         const { data } = await axios.post(`${this.GRIDSOME_API_URL}/contacts`, this.form)
         window.alert('发送成功')
       } catch (error) {
-        console.log(this.GRIDSOME_API_URL.split(':')[0])
         window.alert('发送失败')
       }
     }

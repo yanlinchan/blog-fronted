@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/106.75.134.61:1337/(.*)",
+      "destination": "/api/proxy"
+    }
+  ]
+}
