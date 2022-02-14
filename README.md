@@ -1,14 +1,8 @@
-# Default starter for Gridsome
+# Gridsome
 
-This is the project you get when you run `gridsome create new-project`.
+[strapi项目地址](https://gitee.com/yanlinchan/blog-backend-strapi)
 
-### 1. Install Gridsome CLI tool if you don't have
+[博客地址](https://blog-fronted-9v90cpqx8-yanlinchan.vercel.app/)
 
-`npm install --global @gridsome/cli`
-
-### 2. Create a Gridsome project
-
-1. `gridsome create my-gridsome-site` to install default starter
-2. `cd my-gridsome-site` to open the folder
-3. `gridsome develop` to start a local dev server at `http://localhost:8080`
-4. Happy coding 🎉🙌
+### 作业不足之处
+由于主流浏览器已经不允许在 https 中混合 http 内容，所以默认情况下所以获取不到图片，联系我页面也不能正常工作。只能设置浏览器显示不安全内容，才能正常运行。
